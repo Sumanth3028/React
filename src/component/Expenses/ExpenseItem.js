@@ -11,9 +11,9 @@ const ExpenseItem =(props) => {
 //   const expenseLocation='Hyderabad'
      
       
-  const [old,setTitle]=useState(props);
+  const [old,setTitle]=useState(props.title);
   // let id=old.title;
-  
+  const [oldamount,setAmount]=useState(props.amount)
    const removeHandler=()=>
 {
   //  const removed=old.filter((exp)=>exp.id!==id)
@@ -26,6 +26,14 @@ const ExpenseItem =(props) => {
       
     
 }
+const editHandler=()=>{
+  setTitle('updated');
+  console.log(old);
+}
+const addHandler=()=>{
+  setAmount(100)
+  console.log(oldamount)
+}
   
 
   return (
@@ -33,9 +41,11 @@ const ExpenseItem =(props) => {
     <Card className='expense-item' >
     
       <ExpenseDate date={props.date} />
-      <ExpenseDetails title={props.title} amount={props.amount} />
+      <ExpenseDetails title={old} amount={oldamount} />
        <ExpenseLocation location={props.location}></ExpenseLocation> 
        <button onClick={removeHandler}>Delete Expense</button>
+       <button onClick={editHandler}>Edit Expense</button>
+       <button onClick={addHandler}> Add Expense</button>
     </Card>
     </div>
   );
